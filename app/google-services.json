@@ -1,0 +1,58 @@
+{
+  "project_info": {
+    "project_number": "14736471184",
+    "firebase_url": "https://laravel53documentation.firebaseio.com",
+    "project_id": "laravel53documentation",
+    "storage_bucket": "laravel53documentation.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:14736471184:android:d22761896045bdbd",
+        "android_client_info": {
+          "package_name": "com.tawatchairakpue.laravel53documentation"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "14736471184-a4h1sfitabuftgens8lvnd931jgtoagc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tawatchairakpue.laravel53documentation",
+            "certificate_hash": "D7CF0F1A073B75FA53B17C402A53A3B90D4EEC42"
+          }
+        },
+        {
+          "client_id": "14736471184-geq1bssjh35b1al6pobkaks7j31e9vch.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tawatchairakpue.laravel53documentation",
+            "certificate_hash": "27A1F1283325EDE06E895B5C474813B0CBE72E3A"
+          }
+        },
+        {
+          "client_id": "14736471184-5nvk71ba1m3e3c5gr5ebk7k91m645ud2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKGdOkIAdBIBi_dbqq5cT6dngz9uNDyXg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

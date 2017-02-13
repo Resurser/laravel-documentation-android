@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Prologue">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/prologue_release_notes"
+                    android:title="Release Notes" />
+                <item
+                    android:id="@+id/prologue_upgrade_guide"
+                    android:title="Upgrade Guide" />
+                <item
+                    android:id="@+id/prologue_contribution_guide"
+                    android:title="Contribution Guide" />
+                <item
+                    android:id="@+id/prologue_api_documentation"
+                    android:title="API Documentation" />
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="Getting Started">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/getting_started_installation"
+                    android:title="Installation" />
+                <item
+                    android:id="@+id/getting_started_configuration"
+                    android:title="Configuration" />
+                <item
+                    android:id="@+id/getting_started_directory_structure"
+                    android:title="Directory Structure" />
+                <item
+                    android:id="@+id/getting_started_request_lifecycle"
+                    android:title="Request Lifecycle" />
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="Dev Environments">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/dev_environments_homestead"
+                    android:title="Homestead" />
+                <item
+                    android:id="@+id/getting_started_valet"
+                    android:title="Valet" />
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="Core Concepts">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/core_concepts_service_container"
+                    android:title="Service Container" />
+                <item
+                    android:id="@+id/core_concepts_service_providers"
+                    android:title="Service Providers" />
+                <item
+                    android:id="@+id/core_concepts_facades"
+                    android:title="Facades" />
+                <item
+                    android:id="@+id/core_concepts_contracts"
+                    android:title="Contracts" />
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="The HTTP Layer">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/the_http_layer_routing"
+                    android:title="Routing" />
+                <item
+                    android:id="@+id/the_http_layer_middleware"
+                    android:title="Middleware" />
+                <item
+                    android:id="@+id/the_http_layer_csrf_protection"
+                    android:title="CSRF Protection" />
+                <item
+                    android:id="@+id/the_http_layer_controllers"
+                    android:title="Controllers" />
+                <item
+                    android:id="@+id/the_http_layer_requests"
+                    android:title="Requests" />
+                <item
+                    android:id="@+id/the_http_layer_responses"
+                    android:title="Responses" />
+                <item
+                    android:id="@+id/the_http_layer_views"
+                    android:title="Views" />
+                <item
+                    android:id="@+id/the_http_layer_session"
+                    android:title="Session" />
+                <item
+                    android:id="@+id/the_http_layer_validation"
+                    android:title="Validation" />
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="Frontend">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/frontend_blade_templates"
+                    android:title="Blade Templates" />
+                <item
+                    android:id="@+id/frontend_localization"
+                    android:title="Localization" />
+                <item
+                    android:id="@+id/frontend_frontend_scaffolding"
+                    android:title="Frontend Scaffolding" />
+                <item
+                    android:id="@+id/frontend_compiling_assets"
+                    android:title="Compiling Assets" />
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="Security">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/security_authentication"
+                    android:title="Authentication" />
+                <item
+                    android:id="@+id/security_api_authentication"
+                    android:title="API Authentication" />
+                <item
+                    android:id="@+id/security_authorization"
+                    android:title="Authorization" />
+                <item
+                    android:id="@+id/security_encryption"
+                    android:title="Encryption" />
+                <item
+                    android:id="@+id/security_hashing"
+                    android:title="Hashing" />
+                <item
+                    android:id="@+id/security_password_reset"
+                    android:title="Password Reset" />
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="General Topics">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/general_topics_artisan_console"
+                    android:title="Artisan Console" />
+                <item
+                    android:id="@+id/general_topics_broadcasting"
+                    android:title="Broadcasting" />
+                <item
+                    android:id="@+id/general_topics_cache"
+                    android:title="Cache" />
+                <item
+                    android:id="@+id/general_topics_collections"
+                    android:title="Collections" />
+                <item
+                    android:id="@+id/general_topics_errors_logging"
+                    android:title="Errors &amp; Logging" />
+                <item
+                    android:id="@+id/general_topics_events"
+                    android:title="Events" />
+                <item
+                    android:id="@+id/general_topics_file_storage"
+                    android:title="File Storage" />
+                <item
+                    android:id="@+id/general_topics_helpers"
+                    android:title="Helpers" />
+                <item
+                    android:id="@+id/general_topics_mail"
+                    android:title="Mail" />
+                <item
+                    android:id="@+id/general_topics_notifications"
+                    android:title="Notifications" />
+                <item
+                    android:id="@+id/general_topics_packages"
+                    android:title="Packages" />
+                <item
+                    android:id="@+id/general_topics_queues"
+                    android:title="Queues" />
+                <item
+                    android:id="@+id/general_topics_scheduled_tasks"
+                    android:title="Scheduled Tasks" />
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="Database">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/database_getting_started"
+                    android:title="Getting Started" />
+                <item
+                    android:id="@+id/database_query_builder"
+                    android:title="Query Builder" />
+                <item
+                    android:id="@+id/database_pagination"
+                    android:title="Pagination" />
+                <item
+                    android:id="@+id/database_migrations"
+                    android:title="Migrations" />
+                <item
+                    android:id="@+id/database_seeding"
+                    android:title="Seeding" />
+                <item
+                    android:id="@+id/database_redis"
+                    android:title="Redis" />
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="Eloquent ORM">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/eloquent_orm_getting_started"
+                    android:title="Getting Started" />
+                <item
+                    android:id="@+id/eloquent_orm_relationships"
+                    android:title="Relationships" />
+                <item
+                    android:id="@+id/eloquent_orm_collections"
+                    android:title="Collections" />
+                <item
+                    android:id="@+id/eloquent_orm_mutators"
+                    android:title="Mutators" />
+                <item
+                    android:id="@+id/eloquent_orm_serialization"
+                    android:title="Serialization" />
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="Testing">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/testing_getting_started"
+                    android:title="Getting Started" />
+                <item
+                    android:id="@+id/testing_http_tests"
+                    android:title="HTTP Tests" />
+                <item
+                    android:id="@+id/testing_browser_tests"
+                    android:title="Browser Tests" />
+                <item
+                    android:id="@+id/testing_database"
+                    android:title="Database" />
+                <item
+                    android:id="@+id/testing_mocking"
+                    android:title="Mocking" />
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="Official Packages">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/official_packages_cashier"
+                    android:title="Cashier" />
+                <item
+                    android:id="@+id/official_packages_envoy"
+                    android:title="Envoy" />
+                <item
+                    android:id="@+id/official_packages_passport"
+                    android:title="Passport" />
+                <item
+                    android:id="@+id/official_packages_scout"
+                    android:title="Scout" />
+                <item
+                    android:id="@+id/official_packages_socialite"
+                    android:title="Socialite" />
+            </group>
+        </menu>
+    </item>
+
+</menu>
