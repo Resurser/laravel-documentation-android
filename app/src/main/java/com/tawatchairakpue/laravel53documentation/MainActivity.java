@@ -411,22 +411,22 @@ public class MainActivity extends AppCompatActivity implements
             case R.id.official_packages_cashier:
                 getSupportActionBar().setTitle("Cashier");
                 getSupportActionBar().setSubtitle("Official Packages");
-                tabsIntent.launchUrl(MainActivity.this, Uri.parse("https://laravel.com/docs/5.4/billing"));
+                onDocumentationItemSelected("billing.html");
                 break;
             case R.id.official_packages_envoy:
                 getSupportActionBar().setTitle("Envoy");
                 getSupportActionBar().setSubtitle("Official Packages");
-                tabsIntent.launchUrl(MainActivity.this, Uri.parse("https://laravel.com/docs/5.4/envoy"));
+                onDocumentationItemSelected("envoy.html");
                 break;
             case R.id.official_packages_passport:
                 getSupportActionBar().setTitle("Passport");
                 getSupportActionBar().setSubtitle("Official Packages");
-                tabsIntent.launchUrl(MainActivity.this, Uri.parse("https://laravel.com/docs/5.4/passport"));
+                onDocumentationItemSelected("passport.html");
                 break;
             case R.id.official_packages_scout:
                 getSupportActionBar().setTitle("Scout");
                 getSupportActionBar().setSubtitle("Official Packages");
-                tabsIntent.launchUrl(MainActivity.this, Uri.parse("https://laravel.com/docs/5.4/scout"));
+                onDocumentationItemSelected("scout.html");
                 break;
             case R.id.official_packages_socialite:
                 getSupportActionBar().setTitle("Socialite");
