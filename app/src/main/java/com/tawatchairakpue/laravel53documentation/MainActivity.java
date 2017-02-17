@@ -216,7 +216,7 @@ public class MainActivity extends AppCompatActivity implements
             case R.id.frontend_blade_templates:
                 getSupportActionBar().setTitle("Blade Templates");
                 getSupportActionBar().setSubtitle("Frontend");
-                onDocumentationItemSelected("templates.html");
+                onDocumentationItemSelected("blade.html");
                 break;
             case R.id.frontend_localization:
                 getSupportActionBar().setTitle("Localization");
@@ -554,7 +554,7 @@ public class MainActivity extends AppCompatActivity implements
                 getSupportActionBar().setSubtitle("The HTTP Layer");
                 mNavigationView.setCheckedItem(R.id.the_http_layer_validation);
                 break;
-            case "templates.html":
+            case "blade.html":
                 getSupportActionBar().setTitle("Blade Templates");
                 getSupportActionBar().setSubtitle("Frontend");
                 mNavigationView.setCheckedItem(R.id.frontend_blade_templates);
