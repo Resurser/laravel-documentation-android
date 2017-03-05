@@ -256,7 +256,7 @@ public class MainActivity extends AppCompatActivity implements
             case R.id.security_hashing:
                 getSupportActionBar().setTitle("Hashing");
                 getSupportActionBar().setSubtitle("Security");
-                onDocumentationItemSelected("security_hashing.html");
+                onDocumentationItemSelected("hashing.html");
                 break;
             case R.id.security_password_reset:
                 getSupportActionBar().setTitle("Password Reset");
@@ -594,7 +594,7 @@ public class MainActivity extends AppCompatActivity implements
                 getSupportActionBar().setSubtitle("Security");
                 mNavigationView.setCheckedItem(R.id.security_encryption);
                 break;
-            case "security_hashing.html":
+            case "hashing.html":
                 getSupportActionBar().setTitle("Hashing");
                 getSupportActionBar().setSubtitle("Security");
                 mNavigationView.setCheckedItem(R.id.security_hashing);
