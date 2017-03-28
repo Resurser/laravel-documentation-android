@@ -89,7 +89,7 @@ class Handler
      */
     protected function pull()
     {
-        exec('cd ' . __DIR__ . '/lumen-docs && git pull');
+        exec('cd ' . __DIR__ . '/docs && git pull');
 
         return $this;
     }
