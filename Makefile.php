@@ -12,12 +12,61 @@ class Handler
     /**
      * @var string
      */
-    protected $directory = __DIR__ . '\\docs';
+    protected $apiRepository = 'https://github.com/laravel/framework.git';
 
     /**
-     * @var float
+     * @var string
      */
-    protected $version = 5.3;
+    protected $apiDirectory = __DIR__ . '\\laravel';
+
+    /**
+     * @var string
+     */
+    protected $apiHtmlDirectory = __DIR__ . '\\app\\src\\main\\assets\\api';
+
+    /**
+     * @var string
+     */
+    protected $docsRepository = 'https://github.com/laravel/docs.git';
+
+    /**
+     * @var string
+     */
+    protected $docsMarkdownDirectory = __DIR__ . '\\docs';
+
+    /**
+     * @var string
+     */
+    protected $docsHtmlDirectory = __DIR__ . '\\app\\src\\main\\assets\\docs';
+
+    /**
+     * @var array
+     */
+    protected $docsBranches = [
+        '4.0',
+        '4.1',
+        '4.2',
+        '5.0',
+        '5.1',
+        '5.2',
+        '5.3',
+        '5.4',
+        '5.5',
+        '5.6',
+        # 'master',
+    ];
+
+    /**
+     * @var array
+     */
+    protected $docsSubjects = [
+        'file:///android_asset/',
+        '//',
+        'http://',
+        'https://',
+        '_',
+        '#',
+    ];
 
     /**
      * @return void
@@ -32,53 +81,94 @@ class Handler
      */
     public function handle()
     {
-        $this->git()
-            ->pull();
+        # API
+        # $this->build_api();
 
-        $ruler = $this->ruler();
+        # Documentation
+        $this->build_docs();
+    }
 
-        /** @var SplFileInfo $fileInfo */
-        foreach ($this->files->allFiles($this->directory) as $fileInfo) {
-            $getContents = $this->files->get($fileInfo->getRealPath());
-            $getContents = $this->replaceLinks($this->version, $this->markdown($getContents));
+    /**
+     * @return $this
+     */
+    protected function build_api()
+    {
+        $this->clone_framework()
+            ->sami_generator();
+    }
 
-            if (preg_match_all('/href="(.+?)"/', $getContents, $matches)) {
-                for ($i = 0; $i < count($matches[0]); $i++) {
-                    $value = $matches[1][$i];
-                    if ( ! starts_with($value, $ruler)) {
-                        $relative = $this->replacer($value);
-                        $getContents = str_replace('href="' . $value . '"', 'href="' . $relative . '"', $getContents);
-                    }
-                }
+    /**
+     * @return $this
+     */
+    protected function clone_framework()
+    {
+        $directory = $this->apiDirectory . '\\master';
+
+        if ( ! $this->files->isDirectory($directory)) {
+            $command = sprintf('git clone "%s" "%s"', $this->apiRepository, $directory);
+        } else {
+            $command = sprintf('cd "%s" && git pull', $directory);
+        }
+
+        exec($command);
+
+        return $this;
+    }
+
+    /**
+     * @return $this
+     */
+    protected function sami_generator()
+    {
+        ini_set('memory_limit', '-1');
+
+        $command = sprintf('"%s" update "%s"', __DIR__ . '/vendor/bin/sami.php.bat', __DIR__ . '/sami.php');
+
+        exec($command);
+
+        $buildDirectory = $this->apiDirectory . '\\build';
+        $this->files->copyDirectory($buildDirectory, $this->apiHtmlDirectory);
+
+        return $this;
+    }
+
+    /**
+     * @return $this
+     */
+    protected function build_docs()
+    {
+        $this->separate_branches()
+            ->markdown_generator();
+
+        return $this;
+    }
+
+    /**
+     * @return $this
+     */
+    protected function separate_branches()
+    {
+        $docsRepository = $this->docsRepository;
+        $masterDirectory = $this->docsMarkdownDirectory . '\\master';
+        if ( ! $this->files->isDirectory($masterDirectory)) {
+            $masterCommand = sprintf('git clone "%s" "%s"', $docsRepository, $masterDirectory);
+        } else {
+            $masterCommand = sprintf('cd "%s" && git pull', $masterDirectory);
+        }
+
+        exec($masterCommand);
+
+        foreach ($this->docsBranches as $branch) {
+            $branchDirectory = $this->docsMarkdownDirectory . '\\' . $branch;
+
+            if ( ! $this->files->isDirectory($branchDirectory)) {
+                $this->files->copyDirectory($masterDirectory, $branchDirectory);
+                $branchCommand = sprintf('cd "%s" && git checkout "%s"', $branchDirectory, $branch);
+            } else {
+                $branchCommand = sprintf('cd "%s" && git pull', $branchDirectory);
             }
 
-            $getBasename = $fileInfo->getBasename('.md');
-            $this->files->put(__DIR__ . '/app/src/main/assets/' . $getBasename . '.html', $getContents);
-        }
-    }
-
-    /**
-     * @return array
-     */
-    protected function ruler()
-    {
-        return [
-            'file:///android_asset/',
-            '//',
-            'http://',
-            'https://',
-            '_',
-            '#',
-        ];
-    }
-
-    /**
-     * @return $this
-     */
-    protected function git()
-    {
-        if ( ! $this->files->isDirectory(__DIR__ . '/docs')) {
-            exec('git clone https://github.com/laravel/docs.git ' . __DIR__ . '/docs', $output, $returnCode);
+            exec($branchCommand);
         }
 
         return $this;
@@ -87,57 +177,69 @@ class Handler
     /**
      * @return $this
      */
-    protected function pull()
+    protected function markdown_generator()
     {
-        exec('cd ' . __DIR__ . '/docs && git pull');
+        foreach ($this->docsBranches as $branch) {
+            $branchDirectory = $this->docsMarkdownDirectory . '\\' . $branch;
+            $htmlBranchDirectory = $this->docsHtmlDirectory . '\\' . $branch;
+            if ( ! $this->files->isDirectory($htmlBranchDirectory)) {
+                $this->files->makeDirectory($htmlBranchDirectory);
+            }
+
+            /** @var SplFileInfo $fileInfo */
+            foreach ($this->files->allFiles($branchDirectory) as $fileInfo) {
+                try {
+                    $getContents = $this->files->get($fileInfo->getRealPath());
+                    $markdownContents = (new ParsedownExtra)->text($getContents);
+                    $htmlContents = str_replace("{{version}}", $branch, $markdownContents);
+
+                    if (preg_match_all('/href="(.+?)"/', $htmlContents, $hrefs)) {
+                        for ($i = 0; $i < count($hrefs[0]); $i++) {
+                            $href = $hrefs[1][$i];
+                            if ( ! starts_with($href, $this->docsSubjects)) {
+                                $relative = $this->android_asset($href, $branch);
+                                $htmlContents = str_replace('href="' . $href . '"', 'href="' . $relative . '"', $htmlContents);
+                            }
+                        }
+                    }
+
+                    $getBasename = $fileInfo->getBasename('.md');
+                    $pathToFile = $htmlBranchDirectory . '\\' . $getBasename . '.html';
+                    $this->files->put($pathToFile, $htmlContents);
+                } catch (Exception $ex) {
+                    //
+                }
+            }
+        }
 
         return $this;
     }
 
     /**
-     * @param $value
-     * @param SplFileInfo $fileInfo
+     * @param string $value
+     * @param string $version
      * @return string
      */
-    protected function replacer($value)
+    protected function android_asset($value, $version)
     {
         $android_asset = $value;
         if (preg_match('/(.*)#/', $value, $matches)) {
             $android_asset = $matches[1];
         }
 
-        if (starts_with($android_asset, "/docs/{$this->version}/")) {
+        if (starts_with($android_asset, "/docs/{$version}/")) {
             $specified = $android_asset;
             if ( ! pathinfo($specified, PATHINFO_EXTENSION)) {
                 $specified .= '.html';
             }
 
-            $absolute = str_replace_first("/docs/{$this->version}/", 'file:///android_asset/', $specified);
+            $absolute = str_replace_first("/docs/{$version}/", 'file:///android_asset/', $specified);
             $relative = str_replace(DIRECTORY_SEPARATOR, '/', $absolute);
 
             return $relative;
         }
 
         return $value;
-    }
-
-    /**
-     * @param string $version
-     * @param string $getContents
-     * @return string
-     */
-    protected function replaceLinks($version, $getContents)
-    {
-        return str_replace("{{version}}", $version, $getContents);
-    }
-
-    /**
-     * @param string $getContents
-     * @return string
-     */
-    protected function markdown($getContents)
-    {
-        return (new ParsedownExtra)->text($getContents);
     }
 }
 
