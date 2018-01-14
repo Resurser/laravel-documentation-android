@@ -2,6 +2,7 @@
     "require": {
         "illuminate/filesystem": "^5.3",
         "illuminate/support": "^5.3",
-        "erusev/parsedown-extra": "^0.7.1"
+        "erusev/parsedown-extra": "^0.7.1",
+        "sami/sami": "~4.0"
     }
 }
