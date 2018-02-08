@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_switch_branches_master"
+        android:title="@string/action_switch_branches_master"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_switch_branches_5_6"
+        android:title="@string/action_switch_branches_5_6"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_switch_branches_5_5"
+        android:title="@string/action_switch_branches_5_5"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_switch_branches_5_4"
+        android:title="@string/action_switch_branches_5_4"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_switch_branches_5_3"
+        android:title="@string/action_switch_branches_5_3"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_switch_branches_5_2"
+        android:title="@string/action_switch_branches_5_2"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_switch_branches_5_1"
+        android:title="@string/action_switch_branches_5_1"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_switch_branches_5_0"
+        android:title="@string/action_switch_branches_5_0"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_switch_branches_4_2"
+        android:title="@string/action_switch_branches_4_2"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_switch_branches_4_1"
+        android:title="@string/action_switch_branches_4_1"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_switch_branches_4_0"
+        android:title="@string/action_switch_branches_4_0"
+        app:showAsAction="never" />
+</menu>
