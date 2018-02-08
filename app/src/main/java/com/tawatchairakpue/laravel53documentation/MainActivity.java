@@ -6428,6 +6428,10 @@ public class MainActivity extends AppCompatActivity implements
                 return true;
         }
 
+        CharSequence subtitle = getSupportActionBar().getSubtitle();
+        String s = subtitle + " • Laravel " + switchBranch;
+        getSupportActionBar().setSubtitle(s);
+
         try {
             documentationHtml = readStream(getAssets().open(pathToFile));
             documentationHtml = documentationHtml.replace("{tip}", "<b><i>TIP & TRICK</i></b>");

@@ -22,8 +22,8 @@ android {
         applicationId "com.tawatchairakpue.laravel53documentation"
         minSdkVersion 15
         targetSdkVersion 25
-        versionCode 10011
-        versionName "1.0.11"
+        versionCode 10012
+        versionName "1.0.12"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
